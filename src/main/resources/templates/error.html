@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" href="../static/css/all.css" th:href="@{/css/all.css}">
+    <link rel="stylesheet" href="../static/css/default.css" th:href="@{/css/default.css}">
+    <title>Error</title>
+</head>
+<body class="d-flex align-items-center justify-content-center">
+<!-- Card Error -->
+<div class="card col-4 alert alert-danger boarder boarder-danger text-danger shadow">
+    <h3 class="card-title text-danger">
+        <i class="fa fa-window-close me-1"></i> Errors:
+    </h3>
+    <hr>
+    <div class="card-body">
+        <p class="card-text">
+            <form th:if="${errorVerification}">
+                <div class="alert alert-danger text-center border border-danger">
+                    <b th:text="${errorVerification}"></b>
+                </div>
+            </form>
+        <hr>
+        <a href="/api/v1/login" class="btn btn-sm btn-danger">
+            <i class="fa fa-arrow-alt-circle-left me-1"></i> Back
+        </a>
+    </div>
+</div>
+<!--End of Card Error -->
+</body>
+</html>

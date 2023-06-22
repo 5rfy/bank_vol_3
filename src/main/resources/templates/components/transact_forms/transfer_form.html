@@ -1,0 +1,34 @@
+<div class="card transfer-card" xmlns:th='http://www.thymeleaf.org'>
+    <div class="card-body">
+        <form th:method="POST" th:action="@{/api/v1/transfer}">
+            <div class="form-group">
+                <label for="">Select Account</label>
+                <select name="transfer_from" class="form-control" id="">
+                    <option value=""> -- Select Account -- </option>
+                    <div th:if="${userAccounts != null}" th:each="selectAmount : ${userAccounts}">
+                        <option th:value="${selectAmount.getAccount_id()}" th:text="${selectAmount.getAccount_name()}"></option>
+                    </div>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="">Select Account</label>
+                <select name="transfer_to" class="form-control" id="">
+                    <option value=""> -- Select Account -- </option>
+                    <div th:if="${userAccounts != null}" th:each="selectAmount : ${userAccounts}">
+                        <option th:value="${selectAmount.getAccount_id()}" th:text="${selectAmount.getAccount_name()}"></option>
+                    </div>
+                </select>
+            </div>
+
+            <div class="form-group mb-2">
+                <label for=""> Enter Transfer Amount</label>
+                <input type="text" name="transfer_amount" class="form-control" placeholder="Enter Transfer Amount">
+            </div>
+
+            <div class="form-group mb-2">
+                <button id="" class="btn btn-md transact-btn">Transfer</button>
+            </div>
+        </form>
+    </div>
+</div>

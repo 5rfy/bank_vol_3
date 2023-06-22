@@ -1,0 +1,48 @@
+*{
+    box-sizing: border-box;
+    font-family: Comfortaa, serif;
+}
+body{
+    height: 100vh;
+    background-color: #b8c5d9;
+    display:  flex;
+    align-items: center;
+    justify-content: center;
+}
+.wrapper{
+    width: 480px;
+    height: auto;
+    padding: 15px;
+    background-color: white;
+    border-radius: 7px;
+}
+.email-msg-header{
+    text-align: center;
+}
+.company-name{
+    text-align: center;
+    font-size: 35px;
+    color: gray;
+}
+.welcome-text{
+    text-align: center;
+}
+.verify-btn{
+    text-align: center;
+}
+.verify-account-btn{
+    padding: 15px;
+    background-color: #0095ff;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+}
+.copy-right{
+    padding: 15px;
+    color: gray;
+    font-size: 14px;
+    margin: 20px 0px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

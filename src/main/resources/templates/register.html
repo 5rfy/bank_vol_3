@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" href="../static/css/all.css" th:href="@{/css/all.css}">
+    <link rel="stylesheet" href="../static/css/default.css" th:href="@{/css/default.css}">
+    <title>Register</title>
+</head>
+<body class="d-flex align-items-center justify-content-center">
+<!-- Card Registration -->
+<div class="card registration-form-card col-6 bg-transparent border-0">
+
+    <div class="card-body">
+
+        <h1 class="form-header card-title mb-3">
+            <i class="fa fa-edit"></i> Register
+        </h1>
+        <form th:if="${hasErrorInConfirmPassword}">
+            <div class="alert alert-danger text-center border border-danger">
+                <b th:text="${hasErrorInConfirmPassword}"></b>
+            </div>
+        </form>
+
+        <form th:if="${hasErrorsInEmail}">
+            <div class="alert alert-danger text-center border border-danger">
+                <b th:errors="*{user.email}"></b>
+            </div>
+        </form>
+
+        <form th:if="${errorMessageDuplicateEmail}">
+            <div class="alert alert-danger text-center border border-danger">
+                <b th:text="${errorMessageDuplicateEmail}"></b>
+            </div>
+        </form>
+
+        <form th:if="${successfulRegistration}">
+            <div class="alert alert-success text-center border">
+                <b th:text="${successfulRegistration}"></b>
+            </div>
+        </form>
+
+        <!-- Registration form-->
+        <form th:method="POST" th:action="@{/api/v1/register}"  th:object="${user}" class="reg-form" >
+            <!-- Name Row -->
+            <div class="row">
+                <div class="form-group col">
+                    <label for="firstname"></label>
+                    <input type="text" name="firstname" id="firstname" class="form-control form-control-lg"
+                                                          placeholder="Enter First Name"/>
+                </div>
+                <div class="form-group col">
+                    <label for="lastname"></label>
+                    <input type="text" name="lastname" id="lastname" class="form-control form-control-lg"
+                                                         placeholder="Enter Second Name"/>
+                </div>
+            </div>
+            <!-- End Name Row -->
+
+            <!-- Email Row -->
+            <div class="form-group col">
+                <label for="email"></label>
+                <input type="text" name="email" id="email" class="form-control form-control-lg" placeholder="Enter Your email" required/>
+            </div>
+            <!-- End Email Row -->
+
+            <!-- Password Row -->
+            <div class="row">
+                <div class="form-group col">
+                    <label for="password"></label>
+                    <input type="password" name="password" id="password" class="form-control form-control-lg"
+                                                         placeholder="Enter Password" required/>
+                </div>
+                <div class="form-group col">
+                    <label for="confirm_password"></label>
+                    <input type="password" name="confirm_password" id="confirm_password" class="form-control form-control-lg"
+                                                                 placeholder="Confirm password" required/>
+                </div>
+            </div>
+            <!-- End Password Row -->
+
+            <!-- Button register-->
+            <div class="form-group col">
+                <button class="btn btn-lg">Register</button>
+            </div>
+            <!-- End Button register-->
+        </form>
+        <!-- End Of Registration form-->
+
+        <!-- Card text -->
+        <p class="card-text text-white my-2">
+            Already have an account? <span class="ms-2 text-warning"><a href="/api/v1/login"
+                                                                        class="btn btn-sm text-warning"> Sign In</a></span>
+        </p>
+        <!-- End of Card text -->
+
+        <!-- Back Button To Landing Page -->
+        <small class="text-warning">
+            <i class="fa fa-arrow-alt-circle-left"></i> <a href="/api/v1/index" class="btn btn-sm text-warning">Back</a>
+        </small>
+        <!-- End Of Back Button To Landing Page -->
+    </div>
+</div>
+<!-- End of Card Registration -->
+</body>
+</html>

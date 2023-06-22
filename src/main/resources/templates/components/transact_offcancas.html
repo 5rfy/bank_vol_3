@@ -1,0 +1,31 @@
+<!-- Transact Offcanvas body -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" xmlns:th='http://www.thymeleaf.org'>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title text-white " id="offcanvasExampleLabel">Transact</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <!-- Transact body-->
+  <div class="offcanvas-body">
+    <small class="card-text text-white">
+      Choose an Option below to perform a transaction
+    </small>
+    <!-- Transaction drop list -->
+    <label for="transact-type"></label>
+    <select name="transact-type" class="form-control  my-3" id="transact-type">
+      <option value=""> -- Select Transaction Type -- </option>
+      <option value="payment">Payment</option>
+      <option value="transfer">Transfer</option>
+      <option value="deposit">Deposit</option>
+      <option value="withdraw">Withdraw</option>
+    </select>
+    <!-- End of Transaction drop list -->
+
+    <div th:insert="~{/components/transact_forms/payment_form}"></div>
+    <div th:insert="~{/components/transact_forms/deposit_form}"></div>
+    <div th:insert="~{/components/transact_forms/transfer_form}"></div>
+    <div th:insert="~{/components/transact_forms/withdraw_form}"></div>
+
+  </div>
+  <!-- End of Transact body-->
+</div>
+<!-- End of Transact Offcanvas body -->

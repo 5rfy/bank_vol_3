@@ -1,0 +1,57 @@
+
+*{
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    background-image: url("../images/main_bg.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#sample-text-card{
+    margin: 0 100px;
+    font-family: Comfortaa, serif;
+    color: white;
+}
+
+#sample-text-card h1{
+    font-size: 65px;
+}
+
+#sample-text-card p{
+    font-size: 14px;
+}
+.button-wrapper a{
+    padding: 15px;
+    width: 200px;
+    color: white;
+    box-shadow: 0 3px 6px #000081;
+}
+.register{
+    margin-right: 7px;
+    background-color: #FF4E00;
+    border: 1px solid #8B2B00;
+}
+.login{
+    background-color: #FFB114;
+    border: 1px solid #543800;
+}
+.card{
+    font-family: Comfortaa, serif;
+}
+.card .form-control{
+    box-shadow: 0 3px 6px #000081;
+}
+.card .card-title{
+    color: white;
+}
+.card button{
+    background-color: #FF4E00;
+    border: 1px solid #8B2B00;
+    color: white;
+    width: 200px;
+    margin: 20px 0;
+    box-shadow: 0 3px 6px #000081;
+}

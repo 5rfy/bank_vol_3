@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en"
+      xmlns='http://www.w3.org/1999/xhtml'
+      xmlns:th='http://www.thymeleaf.org'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" href="/static/css/all.css" th:href="@{/css/all.css}">
+    <link rel="stylesheet" href="/static/css/main.css" th:href="@{/css/main.css}">
+    <script src="/static/js/bootstrap.bundle.js" th:src="@{/js/bootstrap.bundle.js}"></script>
+    <title>Dashboard</title>
+</head>
+<body>
+    <div th:insert="~{/components/incl/header}"></div>
+
+    <div th:insert="~{/components/add_account_display}"></div>
+
+    <div th:insert="~{/components/transact_offcancas}"></div>
+
+    <form th:if="${success}">
+        <div class="alert alert-success text-center border border-success">
+            <b th:text="${success}"></b>
+        </div>
+    </form>
+
+    <form th:if="${successDeposit}">
+        <div class="alert alert-success text-center border border-success">
+            <b th:text="${successDeposit}"></b>
+        </div>
+    </form>
+
+    <form th:if="${successTransfer}">
+        <div class="alert alert-success text-center border border-success">
+            <b th:text="${successTransfer}"></b>
+        </div>
+    </form>
+
+    <form th:if="${successWithdraw}">
+        <div class="alert alert-success text-center border border-success">
+            <b th:text="${successWithdraw}"></b>
+        </div>
+    </form>
+
+    <form th:if="${emptyNameType}">
+        <div class="alert alert-danger text-center border border-danger">
+            <b th:text="${emptyNameType}"></b>
+        </div>
+    </form>
+
+    <form th:if="${depositAmountIsNull}">
+        <div class="alert alert-danger text-center border border-danger">
+            <b th:text="${depositAmountIsNull}"></b>
+        </div>
+    </form>
+
+    <form th:if="${transferError}">
+        <div class="alert alert-danger text-center border border-danger">
+            <b th:text="${transferError}"></b>
+        </div>
+    </form>
+
+    <form th:if="${withdrawError}">
+        <div class="alert alert-danger text-center border border-danger">
+            <b th:text="${withdrawError}"></b>
+        </div>
+    </form>
+
+    <div th:if="${!userAccounts.isEmpty()}">
+        <div th:insert="~{/components/accounts_display}"></div>
+    </div>
+
+    <div th:if="${userAccounts.isEmpty()}">
+        <div th:insert="~{/components/no_accounts_display}"></div>
+    </div>
+
+<script src="../static/js/main.js" th:src="@{/js/main.js}"></script>
+</body>
+</html>
