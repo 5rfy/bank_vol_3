@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 @Service
 public class TransactService {
-
     AccountRepository accountRepository;
     TransactRepository transactRepository;
 

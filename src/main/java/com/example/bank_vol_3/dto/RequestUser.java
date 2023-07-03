@@ -1,18 +1,21 @@
 package com.example.bank_vol_3.dto;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class RequestUser {
-    private String firstname;
-    private String lastname;
-    private String email;
-    private String hash_pass;
-    private String token;
-    private String code;
+    String firstname;
+    String lastname;
+    String email;
+    String hash_pass;
+    String token;
+    String code;
 
 }

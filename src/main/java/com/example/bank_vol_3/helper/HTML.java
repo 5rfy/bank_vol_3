@@ -31,7 +31,7 @@ public class HTML {
                 "    <br>\n" +
                 "    <br>\n" +
                 "    <div class='verify-btn'>\n" +
-                "        <a href='"+ url +"' class='verify-account-btn' role='button'>Verify Account</a>\n" +
+                "        <a href='" + url + "' class='verify-account-btn' role='button'>Verify Account</a>\n" +
                 "    </div>\n" +
                 "\n" +
                 "    <div class='copy-right'>\n" +

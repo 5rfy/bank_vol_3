@@ -21,7 +21,7 @@ body{
 }
 
 #sample-text-card p{
-    font-size: 14px;
+    font-size: 20px;
 }
 .button-wrapper a{
     padding: 15px;
@@ -30,7 +30,7 @@ body{
     box-shadow: 0 3px 6px #000081;
 }
 .register{
-    margin-right: 7px;
+    margin-right: 8px;
     background-color: #FF4E00;
     border: 1px solid #8B2B00;
 }
@@ -51,7 +51,7 @@ body{
     background-color: #FF4E00;
     border: 1px solid #8B2B00;
     color: white;
-    width: 200px;
+    width: 210px;
     margin: 20px 0;
     box-shadow: 0 3px 6px #000081;
 }

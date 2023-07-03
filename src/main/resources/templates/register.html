@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
     <link rel="stylesheet" href="../static/css/all.css" th:href="@{/css/all.css}">
     <link rel="stylesheet" href="../static/css/default.css" th:href="@{/css/default.css}">
-    <title>Register</title>
+    <title>Регистрация</title>
 </head>
 <body class="d-flex align-items-center justify-content-center">
 <!-- Card Registration -->
@@ -17,7 +17,7 @@
     <div class="card-body">
 
         <h1 class="form-header card-title mb-3">
-            <i class="fa fa-edit"></i> Register
+            <i class="fa fa-edit"></i> Регистрация
         </h1>
         <form th:if="${hasErrorInConfirmPassword}">
             <div class="alert alert-danger text-center border border-danger">
@@ -50,12 +50,12 @@
                 <div class="form-group col">
                     <label for="firstname"></label>
                     <input type="text" name="firstname" id="firstname" class="form-control form-control-lg"
-                                                          placeholder="Enter First Name"/>
+                                                          placeholder="Введите имя"/>
                 </div>
                 <div class="form-group col">
                     <label for="lastname"></label>
                     <input type="text" name="lastname" id="lastname" class="form-control form-control-lg"
-                                                         placeholder="Enter Second Name"/>
+                                                         placeholder="Введите Фамилию"/>
                 </div>
             </div>
             <!-- End Name Row -->
@@ -63,7 +63,7 @@
             <!-- Email Row -->
             <div class="form-group col">
                 <label for="email"></label>
-                <input type="text" name="email" id="email" class="form-control form-control-lg" placeholder="Enter Your email" required/>
+                <input type="text" name="email" id="email" class="form-control form-control-lg" placeholder="Введите вашу почту" required/>
             </div>
             <!-- End Email Row -->
 
@@ -72,19 +72,19 @@
                 <div class="form-group col">
                     <label for="password"></label>
                     <input type="password" name="password" id="password" class="form-control form-control-lg"
-                                                         placeholder="Enter Password" required/>
+                                                         placeholder="Введите пароль" required/>
                 </div>
                 <div class="form-group col">
                     <label for="confirm_password"></label>
                     <input type="password" name="confirm_password" id="confirm_password" class="form-control form-control-lg"
-                                                                 placeholder="Confirm password" required/>
+                                                                 placeholder="Подтвердите пароль" required/>
                 </div>
             </div>
             <!-- End Password Row -->
 
             <!-- Button register-->
             <div class="form-group col">
-                <button class="btn btn-lg">Register</button>
+                <button class="btn btn-lg">Зарегистрироваться</button>
             </div>
             <!-- End Button register-->
         </form>
@@ -92,14 +92,14 @@
 
         <!-- Card text -->
         <p class="card-text text-white my-2">
-            Already have an account? <span class="ms-2 text-warning"><a href="/api/v1/login"
-                                                                        class="btn btn-sm text-warning"> Sign In</a></span>
+            Уже есть аккаунт? <span class="ms-2 text-warning"><a href="/api/v1/login"
+                                                                        class="btn btn-sm text-warning"> Вход</a></span>
         </p>
         <!-- End of Card text -->
 
         <!-- Back Button To Landing Page -->
         <small class="text-warning">
-            <i class="fa fa-arrow-alt-circle-left"></i> <a href="/api/v1/index" class="btn btn-sm text-warning">Back</a>
+            <i class="fa fa-arrow-alt-circle-left"></i> <a href="/api/v1/index" class="btn btn-sm text-warning">Назад</a>
         </small>
         <!-- End Of Back Button To Landing Page -->
     </div>

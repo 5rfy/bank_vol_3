@@ -16,36 +16,36 @@
 <body>
 <div th:insert="~{/components/incl/header}"></div>
 
-    <div class="container">
-        <div th:if="${paymentHistory != null}">
-            <table class="table text-center">
+<div class="container">
+    <div th:if="${paymentHistory != null}">
+        <table class="table text-center">
+            <tr>
+                <th>Record Number</th>
+                <th>Recipient Name</th>
+                <th>Recipient Account Number</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Reference</th>
+                <th>Reason code</th>
+                <th>Created at</th>
+            </tr>
+
+            <div th:each="payments : ${paymentHistory}">
                 <tr>
-                    <th>Record Number</th>
-                    <th>Recipient Name</th>
-                    <th>Recipient Account Number</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                    <th>Reference</th>
-                    <th>Reason code</th>
-                    <th>Created at</th>
+                    <th th:text="${payments.getPaymentId()}"></th>
+                    <th th:text="${payments.getRecipientName()}"></th>
+                    <th th:text="${payments.getRecipientAccountNumber()}"></th>
+                    <th th:text="${payments.getAmount()}"></th>
+                    <th th:text="${payments.getStatus()}"></th>
+                    <th th:text="${payments.getReference()}"></th>
+                    <th th:text="${payments.getReason_code()}"></th>
+                    <th th:text="${payments.getCreated_at()}"></th>
                 </tr>
-
-                <div th:each="payments : ${paymentHistory}">
-                    <tr>
-                        <th th:text="${payments.getPaymentId()}"></th>
-                        <th th:text="${payments.getRecipientName()}"></th>
-                        <th th:text="${payments.getRecipientAccountNumber()}"></th>
-                        <th th:text="${payments.getAmount()}"></th>
-                        <th th:text="${payments.getStatus()}"></th>
-                        <th th:text="${payments.getReference()}"></th>
-                        <th th:text="${payments.getReason_code()}"></th>
-                        <th th:text="${payments.getCreated_at()}"></th>
-                    </tr>
-                </div>
-            </table>
-        </div>
-
+            </div>
+        </table>
     </div>
+
+</div>
 
 <script src="../static/js/main.js" th:src="@{/js/main.js}"></script>
 </body>

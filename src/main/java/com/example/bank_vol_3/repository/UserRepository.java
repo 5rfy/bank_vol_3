@@ -11,7 +11,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-
     Optional<User> findByEmail(String email);
 
     @Modifying
@@ -19,7 +18,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Transactional
     void verifyAccount(@Param("token") UUID token,
                        @Param("code") Integer code);
-
 
     @Query(value = "SELECT token FROM users WHERE token= :token", nativeQuery = true)
     String checkToken(@Param("token") UUID token);

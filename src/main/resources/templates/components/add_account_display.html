@@ -1,7 +1,7 @@
 <!-- Account container -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" xmlns:th='http://www.thymeleaf.org'>
     <div class="offcanvas-header">
-        <h5 id="offcanvasRightLabel" class="text-white">Create / Add an Account</h5>
+        <h5 id="offcanvasRightLabel" class="text-white">Создать / Добавить учетную запись</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <!-- Body account -->
@@ -10,14 +10,14 @@
             <div class="card-body">
                 <form th:method="POST" th:action="@{/api/v1/create_account}" class="add-account-form">
                     <div class="form-group mb-3">
-                        <label for=""> Enter Account Name</label>
+                        <label for=""> Введите имя учетной записи</label>
                         <input type="text" name="account_name" class="form-control" placeholder="Enter Account name...">
                     </div>
 
                     <div class="form-group mb-3">
-                        <label for=""> Select Account type</label>
+                        <label for=""> Выберите тип учетной записи</label>
                         <select name="account_type" class="form-control" id="">
-                            <option value="">-- Select Account Type --</option>
+                            <option value="">-- Выберите тип учетной записи --</option>
                             <option value="check">Check</option>
                             <option value="savings">Savings</option>
                             <option value="business">Business</option>
@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="form-group my-2">
-                        <button id="" class="btn btn-md transact-btn">Add Account</button>
+                        <button id="" class="btn btn-md transact-btn">Добавить учетную запись</button>
                     </div>
                 </form>
             </div>

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Service
 public class TransferService {
-
     AccountRepository accountRepository;
 
     public void checkFields(Long transferFrom, Long transferTo, String transferAmount) {

@@ -10,9 +10,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Service
 public class WithdrawService {
-    
     AccountRepository accountRepository;
-
 
     public void checkFields(String amount, Long accountId) {
         if (amount.isEmpty() || amount.equals("0")) {

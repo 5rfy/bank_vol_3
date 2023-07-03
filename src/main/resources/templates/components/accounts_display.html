@@ -4,14 +4,14 @@
     <!-- Account button -->
     <button id="add-account-btn" class="btn btn-lg shadow" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-        <i class="fa fa-credit-card"></i> Add new Account
+        <i class="fa fa-credit-card"></i> Создать новую учетную запись
     </button>
     <!-- End of Account button -->
 
     <!-- Transactions button -->
     <button id="transact-btn" class="btn btn-lg ms-auto shadow" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-        <i class="fa fa-wallet"></i> Transact
+        <i class="fa fa-wallet"></i> Перевод
     </button>
     <!-- End ofTransactions button -->
 </div>
@@ -19,7 +19,7 @@
 
 <!-- Total Account Balance container -->
 <div class="container d-flex py-3">
-    <h2 class="me-auto">Total Account Balance:</h2>
+    <h2 class="me-auto">Баланс:</h2>
     <h2 class="ms-auto">
         <div th:if="${balance != 0}" >
             <b th:text="${balance}"></b>

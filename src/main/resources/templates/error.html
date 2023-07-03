@@ -19,11 +19,9 @@
     <hr>
     <div class="card-body">
         <p class="card-text">
-            <form th:if="${errorVerification}">
                 <div class="alert alert-danger text-center border border-danger">
-                    <b th:text="${errorVerification}"></b>
+                    <b th:text="${errorText}"></b>
                 </div>
-            </form>
         <hr>
         <a href="/api/v1/login" class="btn btn-sm btn-danger">
             <i class="fa fa-arrow-alt-circle-left me-1"></i> Back

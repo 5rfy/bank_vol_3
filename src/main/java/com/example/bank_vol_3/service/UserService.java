@@ -20,7 +20,6 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Service
 public class UserService {
-
     UserRepository userRepository;
     MailService mailService;
     PasswordEncoder passwordEncoder;

@@ -3,7 +3,6 @@ package com.example.bank_vol_3.service;
 import com.example.bank_vol_3.model.Account;
 import com.example.bank_vol_3.model.Payment;
 import com.example.bank_vol_3.model.PaymentHistory;
-import com.example.bank_vol_3.model.User;
 import com.example.bank_vol_3.repository.AccountRepository;
 import com.example.bank_vol_3.repository.PaymentHistoryRepository;
 import com.example.bank_vol_3.repository.PaymentRepository;
@@ -12,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -25,7 +23,8 @@ public class PaymentService {
     PaymentRepository paymentRepository;
     TransferService transferService;//TODO
     PaymentHistoryRepository paymentHistoryRepository;
-public void checkFields(String beneficiary,
+
+    public void checkFields(String beneficiary,
                             String accountNumber,
                             Long accountId,
                             String paymentAmount) {
@@ -56,7 +55,7 @@ public void checkFields(String beneficiary,
         int recipientNumber = Integer.parseInt(accountNumber);
 
         Account recipientAccount = checkRecipientAndAmount(amount, currentBalance, recipientNumber);
-        double recipientBalance =  recipientAccount.getBalance().doubleValue();
+        double recipientBalance = recipientAccount.getBalance().doubleValue();
         long recipientId = recipientAccount.getAccount_id();
 
 

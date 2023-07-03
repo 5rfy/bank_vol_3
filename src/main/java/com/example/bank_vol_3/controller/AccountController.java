@@ -27,7 +27,7 @@ public class AccountController {
                                 HttpSession session) {
 
         try {
-            accountService.chekNameType(accountName, accountType);
+            accountService.checkNameType(accountName, accountType);
             User user = (User)session.getAttribute("user");
             accountService.createBankAccount(user.getId(), accountName, accountType);
             attributes.addFlashAttribute("success", "Аккаунт успешно создан");

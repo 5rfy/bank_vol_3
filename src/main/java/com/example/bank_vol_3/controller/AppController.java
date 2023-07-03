@@ -27,14 +27,16 @@ public class AppController {
     AccountService accountService;
 
     PaymentService paymentService;
+    ModelAndView name = new ModelAndView("/components/incl/header");
 
     @GetMapping("/dashboard")
     public String getDashboard(HttpSession session,
                                Model model) {
         ModelAndView balance = new ModelAndView("/components/accounts_display");
-        ModelAndView name = new ModelAndView("/components/incl/header");
 
         User user = (User) session.getAttribute("user");
+
+        userIsNull(user);
 
         List<Account> accounts = accountService.getAccounts(user.getId());
         BigDecimal getBalance = accountService.getBalance(user.getId());
@@ -52,16 +54,23 @@ public class AppController {
     @GetMapping("/payment_history")
     public String getPaymentHistory(HttpSession session,
                                     Model model) {
-        ModelAndView name = new ModelAndView("/components/incl/header");
 
         User user = (User) session.getAttribute("user");
 
         name.addObject("user", user);
 
         List<PaymentHistory> paymentHistory = paymentService.getAllPayments(user.getId());
+
         model.addAttribute("paymentHistory", paymentHistory);
         model.addAttribute("user", user);
 
         return "payment_history";
+    }
+
+    private void userIsNull(User user) {
+
+        if (user == null) {
+            throw new RuntimeException("");
+        }
     }
 }

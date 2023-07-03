@@ -1,12 +1,10 @@
 package com.example.bank_vol_3.controller;
 
-import com.example.bank_vol_3.repository.UserRepository;
 import com.example.bank_vol_3.service.UserService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,7 +16,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1")
 @Controller
-public class TestController {
+public class IndexController {
 
     UserService userService;
 

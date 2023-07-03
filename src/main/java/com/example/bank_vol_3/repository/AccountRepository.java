@@ -11,7 +11,6 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public interface AccountRepository extends JpaRepository<Account, Long> {
-
     @Query(value = "SELECT * FROM accounts WHERE user_id =:user_id", nativeQuery = true)
     List<Account> findAccountsById(@Param("user_id") Long id);
 

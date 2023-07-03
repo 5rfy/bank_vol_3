@@ -26,7 +26,7 @@ public class AccountService {
         return accountRepository.getTotalBalance(id);
     }
 
-    public void chekNameType(String accountName, String accountType) {
+    public void checkNameType(String accountName, String accountType) {
         if (accountName.isEmpty()) {
             throw new RuntimeException("Введите имя учетной записи");
         }
@@ -37,10 +37,10 @@ public class AccountService {
 
     public void createBankAccount(Long id,
                                   String accountName,
-                                  String accountType){
+                                  String accountType) {
         int accountNumber = generateAccountNumber();
 
-        accountRepository.createBankAccount(id, accountNumber, accountName, accountType );
+        accountRepository.createBankAccount(id, accountNumber, accountName, accountType);
 
     }
 
