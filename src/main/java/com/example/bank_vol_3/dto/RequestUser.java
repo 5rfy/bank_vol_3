@@ -7,15 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class RequestUser {
     String firstname;
     String lastname;
     String email;
-    String hash_pass;
-    String token;
-    String code;
-
 }

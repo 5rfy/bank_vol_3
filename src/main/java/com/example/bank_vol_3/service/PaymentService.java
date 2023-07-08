@@ -1,8 +1,8 @@
 package com.example.bank_vol_3.service;
 
-import com.example.bank_vol_3.model.Account;
-import com.example.bank_vol_3.model.Payment;
-import com.example.bank_vol_3.model.PaymentHistory;
+import com.example.bank_vol_3.entities.Account;
+import com.example.bank_vol_3.entities.Payment;
+import com.example.bank_vol_3.entities.PaymentHistory;
 import com.example.bank_vol_3.repository.AccountRepository;
 import com.example.bank_vol_3.repository.PaymentHistoryRepository;
 import com.example.bank_vol_3.repository.PaymentRepository;

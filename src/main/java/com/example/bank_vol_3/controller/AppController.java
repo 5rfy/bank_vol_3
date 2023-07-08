@@ -1,8 +1,8 @@
 package com.example.bank_vol_3.controller;
 
-import com.example.bank_vol_3.model.Account;
-import com.example.bank_vol_3.model.PaymentHistory;
-import com.example.bank_vol_3.model.User;
+import com.example.bank_vol_3.entities.Account;
+import com.example.bank_vol_3.entities.PaymentHistory;
+import com.example.bank_vol_3.entities.User;
 import com.example.bank_vol_3.service.AccountService;
 import com.example.bank_vol_3.service.PaymentService;
 import jakarta.servlet.http.HttpSession;

@@ -1,4 +1,4 @@
-package com.example.bank_vol_3.model;
+package com.example.bank_vol_3.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -12,19 +12,17 @@ import java.time.LocalDateTime;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-@Table(name = "payments")
-public class Payment {
+@Table(name = "transact")
+public class Transact {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long payment_id;
+    Long transaction_id;
     Long account_id;
-    String beneficiary;
-    int beneficiary_acc_no;
+    String transaction_type;
     double amount;
-    String reference_no;
+    String source;
     String status;
     String reason_code;
     LocalDateTime created_at;
-
 }

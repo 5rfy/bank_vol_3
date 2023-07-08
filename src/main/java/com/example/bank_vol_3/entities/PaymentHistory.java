@@ -1,10 +1,9 @@
-package com.example.bank_vol_3.model;
+package com.example.bank_vol_3.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
@@ -13,17 +12,19 @@ import java.time.LocalDateTime;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-@Table(name = "accounts")
-public class Account {
+@Table(name = "payment_history")
+public class PaymentHistory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long account_id;
-    Long user_id;
-    Integer accountNumber;
-    String account_name;
-    String account_type;
-    BigDecimal balance;
+    Long paymentId;
+    Long accountId;
+    Long userId;
+    String recipientName;
+    int recipientAccountNumber;
+    double amount;
+    String status;
+    String reference;
+    String reason_code;
     LocalDateTime created_at;
-    LocalDateTime updated_at;
 }

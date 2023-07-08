@@ -1,6 +1,6 @@
 package com.example.bank_vol_3.controller;
 
-import com.example.bank_vol_3.model.User;
+import com.example.bank_vol_3.entities.User;
 import com.example.bank_vol_3.service.AccountService;
 import jakarta.servlet.http.HttpSession;
 import lombok.AccessLevel;

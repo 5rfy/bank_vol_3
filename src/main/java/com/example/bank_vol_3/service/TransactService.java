@@ -1,6 +1,6 @@
 package com.example.bank_vol_3.service;
 
-import com.example.bank_vol_3.model.Transact;
+import com.example.bank_vol_3.entities.Transact;
 import com.example.bank_vol_3.repository.AccountRepository;
 import com.example.bank_vol_3.repository.TransactRepository;
 import lombok.AccessLevel;

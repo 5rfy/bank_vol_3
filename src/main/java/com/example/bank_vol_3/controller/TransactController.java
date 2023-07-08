@@ -1,7 +1,7 @@
 package com.example.bank_vol_3.controller;
 
-import com.example.bank_vol_3.model.Account;
-import com.example.bank_vol_3.model.User;
+import com.example.bank_vol_3.entities.Account;
+import com.example.bank_vol_3.entities.User;
 import com.example.bank_vol_3.service.*;
 import jakarta.servlet.http.HttpSession;
 import lombok.AccessLevel;
@@ -19,7 +19,7 @@ import java.util.List;
 
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
-@RequestMapping("/api/v1")
+@RequestMapping("/admin/api/v1")
 @Controller
 public class TransactController {
 

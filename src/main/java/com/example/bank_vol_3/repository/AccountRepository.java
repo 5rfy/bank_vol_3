@@ -1,15 +1,16 @@
 package com.example.bank_vol_3.repository;
 
-import com.example.bank_vol_3.model.Account;
+import com.example.bank_vol_3.entities.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
-
+@Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
     @Query(value = "SELECT * FROM accounts WHERE user_id =:user_id", nativeQuery = true)
     List<Account> findAccountsById(@Param("user_id") Long id);

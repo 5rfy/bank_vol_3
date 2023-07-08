@@ -1,6 +1,6 @@
 package com.example.bank_vol_3.service;
 
-import com.example.bank_vol_3.model.Account;
+import com.example.bank_vol_3.entities.Account;
 import com.example.bank_vol_3.repository.AccountRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
