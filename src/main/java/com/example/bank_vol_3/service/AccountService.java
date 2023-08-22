@@ -1,6 +1,7 @@
 package com.example.bank_vol_3.service;
 
-import com.example.bank_vol_3.model.Account;
+import com.example.bank_vol_3.entities.Account;
+import com.example.bank_vol_3.entities.User;
 import com.example.bank_vol_3.repository.AccountRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -49,5 +50,12 @@ public class AccountService {
         int bound = 1000;
 
         return bound * rand.nextInt(bound);
+    }
+
+    public void userIsNull(User user) {
+
+        if (user == null) {
+            throw new RuntimeException("");
+        }
     }
 }

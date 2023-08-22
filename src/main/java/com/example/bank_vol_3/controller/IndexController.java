@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
-@RequestMapping("/api/v1")
+@RequestMapping("/secured/api/v1")
 @Controller
 public class IndexController {
 
@@ -32,6 +32,7 @@ public class IndexController {
 
         return "error";
     }
+
     @GetMapping("/verify")
     public String getVerify(@RequestParam("token") UUID token,
                             @RequestParam("code") Integer code,

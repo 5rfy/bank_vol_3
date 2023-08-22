@@ -1,6 +1,6 @@
 package com.example.bank_vol_3.controller;
 
-import com.example.bank_vol_3.model.User;
+import com.example.bank_vol_3.entities.User;
 import com.example.bank_vol_3.service.UserService;
 import jakarta.validation.Valid;
 import lombok.AccessLevel;
@@ -26,13 +26,13 @@ public class RegisterController {
 
     @PostMapping("/register")
     public String register(@Valid @ModelAttribute("user") User user,
-                                 BindingResult result,
-                                 @RequestParam String firstname,
-                                 @RequestParam String lastname,
-                                 @RequestParam String email,
-                                 @RequestParam String password,
-                                 @RequestParam String confirm_password,
-                                 Model model) {
+                           BindingResult result,
+                           @RequestParam String firstname,
+                           @RequestParam String lastname,
+                           @RequestParam String email,
+                           @RequestParam String password,
+                           @RequestParam String confirm_password,
+                           Model model) {
         // checking for password
         if (!password.equals(confirm_password)) {
             model.addAttribute("hasErrorInConfirmPassword", "Пароли не совпадают");
@@ -45,7 +45,7 @@ public class RegisterController {
         }
         // checking for duplicate email
         try {
-            userService.registerUser(firstname,lastname,email,password);
+            userService.registerUser(firstname, lastname, email, password);
             model.addAttribute("successfulRegistration", "Аккаунт успешно зарегистрирован. Проверьте указанную почту для подтверждения аккаунта");
             return "register";
         } catch (RuntimeException exception) {

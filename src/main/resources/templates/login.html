@@ -1,91 +1,95 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
-  <link rel="stylesheet" href="../static/css/all.css" th:href="@{/css/all.css}">
-  <link rel="stylesheet" href="../static/css/default.css" th:href="@{/css/default.css}">
-  <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" href="../static/css/all.css" th:href="@{/css/all.css}">
+    <link rel="stylesheet" href="../static/css/default.css" th:href="@{/css/default.css}">
+    <title>Login</title>
 </head>
 <body class="d-flex align-items-center justify-content-center">
 <!-- Card Login -->
 <div class="card login-form-card col-4 bg-transparent border-0">
 
-  <div class="card-body">
-    <h1 class="form-header card-title mb-3">
-      <i class="fa fa-user-circle"></i> Вход
-    </h1>
+    <div class="card-body">
+        <h1 class="form-header card-title mb-3">
+            <i class="fa fa-user-circle"></i> Вход
+        </h1>
 
-    <form th:if="${successVerification}">
-      <div class="alert alert-success text-center border">
-        <b th:text="${successVerification}"></b>
-      </div>
-    </form>
+        <form th:if="${successVerification}">
+            <div class="alert alert-success text-center border">
+                <b th:text="${successVerification}"></b>
+            </div>
+        </form>
 
-    <form th:if="${errorVerification}">
-      <div class="alert alert-danger text-center border-danger">
-        <b th:text="${errorVerification}"></b>
-      </div>
-    </form>
+        <form th:if="${errorVerification}">
+            <div class="alert alert-danger text-center border-danger">
+                <b th:text="${errorVerification}"></b>
+            </div>
+        </form>
 
-    <form th:if="${invalidEmailOrPassword}">
-      <div class="alert alert-danger text-center border-danger">
-        <b th:text="${invalidEmailOrPassword}"></b>
-      </div>
-    </form>
+        <form th:if="${invalidEmailOrPassword}">
+            <div class="alert alert-danger text-center border-danger">
+                <b th:text="${invalidEmailOrPassword}"></b>
+            </div>
+        </form>
 
-    <form th:if="${logged_out}">
-      <div class="alert alert-info text-center">
-        <b th:text="${logged_out}"></b>
-      </div>
-    </form>
+        <form th:if="${logged_out}">
+            <div class="alert alert-info text-center">
+                <b th:text="${logged_out}"></b>
+            </div>
+        </form>
 
-    <!-- Login form-->
-    <form th:method="POST" th:action="@{/api/v1/login}" class="login-form">
-      <!-- Email Row -->
-      <div class="form-group col">
-        <label for="email"></label>
-        <input type="text" name="email" id="email" class="form-control form-control-lg" placeholder="Введите вашу почту"/>
-      </div>
-      <!-- End Email Row -->
+        <!-- Login form-->
+        <form th:method="POST" th:action="@{/api/v1/login}" class="login-form">
+            <!-- Email Row -->
+            <div class="form-group col">
+                <label for="email"></label>
+                <input type="text" name="email" id="email" class="form-control form-control-lg"
+                       placeholder="Введите вашу почту"/>
+            </div>
+            <!-- End Email Row -->
 
-      <!-- Password -->
-      <div class="form-group col">
-        <label for="password"></label>
-        <input type="password" name="password" id="password" class="form-control form-control-lg" placeholder="Введите ваш пароль">
-      </div>
-      <!--  End of Password -->
+            <!-- Password -->
+            <div class="form-group col">
+                <label for="password"></label>
+                <input type="password" name="password" id="password" class="form-control form-control-lg"
+                       placeholder="Введите ваш пароль">
+            </div>
+            <!--  End of Password -->
 
-      <!-- Token -->
-      <div class="form-group col">
-        <label for="_token"></label>
-        <input type="hidden" name="_token" id="_token" th:value="${token}">
-      </div>
-      <!--  End of Token -->
+            <!-- Token -->
+            <div class="form-group col">
+                <label for="_token"></label>
+                <input type="hidden" name="_token" id="_token" th:value="${token}">
+            </div>
+            <!--  End of Token -->
 
-      <!-- Button login-->
-      <div class="form-group col">
-        <button class="btn btn-lg">Вход</button>
-      </div>
-      <!-- End Button login-->
-    </form>
-    <!-- End Of Login form-->
+            <!-- Button login-->
+            <div class="form-group col">
+                <button class="btn btn-lg">Вход</button>
+            </div>
+            <!-- End Button login-->
+        </form>
+        <!-- End Of Login form-->
 
-    <!-- Card text -->
-    <p class="card-text text-white my-2">
-      Еще нет аккаунта? <span class="ms-2 text-warning"><a href="/api/v1/register" class="btn btn-sm text-warning">Регистрация</a></span>
-    </p>
-    <!-- End of Card text -->
+        <!-- Card text -->
+        <p class="card-text text-white my-2">
+            Еще нет аккаунта? <span class="ms-2 text-warning"><a href="/api/v1/register"
+                                                                 class="btn btn-sm text-warning">Регистрация</a></span>
+        </p>
+        <!-- End of Card text -->
 
-    <!-- Back Button To Landing Page -->
-    <small class="text-warning">
-      <i class="fa fa-arrow-alt-circle-left"></i> <a href="/api/v1/index" class="btn btn-sm text-warning">Назад</a>
-    </small>
-    <!-- End Of Back Button To Landing Page -->
-  </div>
+        <!-- Back Button To Landing Page -->
+        <small class="text-warning">
+            <i class="fa fa-arrow-alt-circle-left"></i> <a href="/api/v1/index"
+                                                           class="btn btn-sm text-warning">Назад</a>
+        </small>
+        <!-- End Of Back Button To Landing Page -->
+    </div>
 </div>
 <!-- End of Card Login -->
 </body>

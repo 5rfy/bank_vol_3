@@ -44,18 +44,18 @@
         </form>
 
         <!-- Registration form-->
-        <form th:method="POST" th:action="@{/api/v1/register}"  th:object="${user}" class="reg-form" >
+        <form th:method="POST" th:action="@{/api/v1/register}" th:object="${user}" class="reg-form">
             <!-- Name Row -->
             <div class="row">
                 <div class="form-group col">
                     <label for="firstname"></label>
                     <input type="text" name="firstname" id="firstname" class="form-control form-control-lg"
-                                                          placeholder="Введите имя"/>
+                           placeholder="Введите имя"/>
                 </div>
                 <div class="form-group col">
                     <label for="lastname"></label>
                     <input type="text" name="lastname" id="lastname" class="form-control form-control-lg"
-                                                         placeholder="Введите Фамилию"/>
+                           placeholder="Введите Фамилию"/>
                 </div>
             </div>
             <!-- End Name Row -->
@@ -63,7 +63,8 @@
             <!-- Email Row -->
             <div class="form-group col">
                 <label for="email"></label>
-                <input type="text" name="email" id="email" class="form-control form-control-lg" placeholder="Введите вашу почту" required/>
+                <input type="text" name="email" id="email" class="form-control form-control-lg"
+                       placeholder="Введите вашу почту" required/>
             </div>
             <!-- End Email Row -->
 
@@ -72,12 +73,13 @@
                 <div class="form-group col">
                     <label for="password"></label>
                     <input type="password" name="password" id="password" class="form-control form-control-lg"
-                                                         placeholder="Введите пароль" required/>
+                           placeholder="Введите пароль" required/>
                 </div>
                 <div class="form-group col">
                     <label for="confirm_password"></label>
-                    <input type="password" name="confirm_password" id="confirm_password" class="form-control form-control-lg"
-                                                                 placeholder="Подтвердите пароль" required/>
+                    <input type="password" name="confirm_password" id="confirm_password"
+                           class="form-control form-control-lg"
+                           placeholder="Подтвердите пароль" required/>
                 </div>
             </div>
             <!-- End Password Row -->
@@ -93,13 +95,14 @@
         <!-- Card text -->
         <p class="card-text text-white my-2">
             Уже есть аккаунт? <span class="ms-2 text-warning"><a href="/api/v1/login"
-                                                                        class="btn btn-sm text-warning"> Вход</a></span>
+                                                                 class="btn btn-sm text-warning"> Вход</a></span>
         </p>
         <!-- End of Card text -->
 
         <!-- Back Button To Landing Page -->
         <small class="text-warning">
-            <i class="fa fa-arrow-alt-circle-left"></i> <a href="/api/v1/index" class="btn btn-sm text-warning">Назад</a>
+            <i class="fa fa-arrow-alt-circle-left"></i> <a href="/api/v1/index"
+                                                           class="btn btn-sm text-warning">Назад</a>
         </small>
         <!-- End Of Back Button To Landing Page -->
     </div>

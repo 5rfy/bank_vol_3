@@ -14,7 +14,7 @@ import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-public class SecurityConfig  {
+public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, HandlerMappingIntrospector introspect) throws Exception {
@@ -30,6 +30,7 @@ public class SecurityConfig  {
 
         return http.csrf().disable().build();
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

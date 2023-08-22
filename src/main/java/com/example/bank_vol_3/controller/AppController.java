@@ -1,8 +1,8 @@
 package com.example.bank_vol_3.controller;
 
-import com.example.bank_vol_3.model.Account;
-import com.example.bank_vol_3.model.PaymentHistory;
-import com.example.bank_vol_3.model.User;
+import com.example.bank_vol_3.entities.Account;
+import com.example.bank_vol_3.entities.PaymentHistory;
+import com.example.bank_vol_3.entities.User;
 import com.example.bank_vol_3.service.AccountService;
 import com.example.bank_vol_3.service.PaymentService;
 import jakarta.servlet.http.HttpSession;
@@ -36,7 +36,7 @@ public class AppController {
 
         User user = (User) session.getAttribute("user");
 
-        userIsNull(user);
+        accountService.userIsNull(user);
 
         List<Account> accounts = accountService.getAccounts(user.getId());
         BigDecimal getBalance = accountService.getBalance(user.getId());
@@ -65,12 +65,5 @@ public class AppController {
         model.addAttribute("user", user);
 
         return "payment_history";
-    }
-
-    private void userIsNull(User user) {
-
-        if (user == null) {
-            throw new RuntimeException("");
-        }
     }
 }

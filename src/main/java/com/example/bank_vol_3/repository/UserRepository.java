@@ -1,6 +1,6 @@
 package com.example.bank_vol_3.repository;
 
-import com.example.bank_vol_3.model.User;
+import com.example.bank_vol_3.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

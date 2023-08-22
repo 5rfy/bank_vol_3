@@ -1,7 +1,7 @@
 package com.example.bank_vol_3.service;
 
+import com.example.bank_vol_3.entities.User;
 import com.example.bank_vol_3.helper.HTML;
-import com.example.bank_vol_3.model.User;
 import com.example.bank_vol_3.repository.UserRepository;
 import jakarta.servlet.http.HttpSession;
 import lombok.AccessLevel;
@@ -44,7 +44,6 @@ public class UserService {
                 .build();
         userRepository.save(user);
         mailService.send(email, "Подтверждение аккаунта", HTML.htmlEmailTemplate(token.toString(), Integer.toString(code)));
-
     }
 
     public void verifyAccount(UUID token, Integer code) {

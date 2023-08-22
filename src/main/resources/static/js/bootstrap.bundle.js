@@ -7,7 +7,8 @@
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
         typeof define === 'function' && define.amd ? define(factory) :
             (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.bootstrap = factory());
-}(this, (function () { 'use strict';
+}(this, (function () {
+    'use strict';
 
     /**
      * --------------------------------------------------------------------------
@@ -192,7 +193,8 @@
         return findShadowRoot(element.parentNode);
     };
 
-    const noop = () => {};
+    const noop = () => {
+    };
 
     const reflow = element => element.offsetHeight;
 
@@ -320,6 +322,7 @@
     };
     const customEventsRegex = /^(mouseenter|mouseleave)/i;
     const nativeEvents = new Set(['click', 'dblclick', 'mouseup', 'mousedown', 'contextmenu', 'mousewheel', 'DOMMouseScroll', 'mouseover', 'mouseout', 'mousemove', 'selectstart', 'selectend', 'keydown', 'keypress', 'keyup', 'orientationchange', 'touchstart', 'touchmove', 'touchend', 'touchcancel', 'pointerdown', 'pointermove', 'pointerup', 'pointerleave', 'pointercancel', 'gesturestart', 'gesturechange', 'gestureend', 'focus', 'blur', 'change', 'reset', 'select', 'submit', 'focusin', 'focusout', 'load', 'unload', 'beforeunload', 'resize', 'move', 'DOMContentLoaded', 'readystatechange', 'error', 'abort', 'scroll']);
+
     /**
      * ------------------------------------------------------------------------
      * Private methods
@@ -616,6 +619,7 @@
             EventHandler.off(this._element, `.${this.constructor.DATA_KEY}`);
             this._element = null;
         }
+
         /** Static */
 
 
@@ -652,6 +656,7 @@
     const CLASS_NAME_ALERT = 'alert';
     const CLASS_NAME_FADE$6 = 'fade';
     const CLASS_NAME_SHOW$9 = 'show';
+
     /**
      * ------------------------------------------------------------------------
      * Class Definition
@@ -734,6 +739,7 @@
         }
 
     }
+
     /**
      * ------------------------------------------------------------------------
      * Data Api implementation
@@ -770,6 +776,7 @@
     const CLASS_NAME_ACTIVE$3 = 'active';
     const SELECTOR_DATA_TOGGLE$5 = '[data-bs-toggle="button"]';
     const EVENT_CLICK_DATA_API$6 = `click${EVENT_KEY$a}${DATA_API_KEY$7}`;
+
     /**
      * ------------------------------------------------------------------------
      * Class Definition
@@ -804,6 +811,7 @@
         }
 
     }
+
     /**
      * ------------------------------------------------------------------------
      * Data Api implementation
@@ -1049,6 +1057,7 @@
     const SELECTOR_DATA_RIDE = '[data-bs-ride="carousel"]';
     const POINTER_TYPE_TOUCH = 'touch';
     const POINTER_TYPE_PEN = 'pen';
+
     /**
      * ------------------------------------------------------------------------
      * Class Definition
@@ -1173,7 +1182,8 @@
 
 
         _getConfig(config) {
-            config = { ...Default$9,
+            config = {
+                ...Default$9,
                 ...config
             };
             typeCheckConfig(NAME$a, config, DefaultType$9);
@@ -1462,12 +1472,14 @@
 
         static carouselInterface(element, config) {
             let data = Data.get(element, DATA_KEY$9);
-            let _config = { ...Default$9,
+            let _config = {
+                ...Default$9,
                 ...Manipulator.getDataAttributes(element)
             };
 
             if (typeof config === 'object') {
-                _config = { ..._config,
+                _config = {
+                    ..._config,
                     ...config
                 };
             }
@@ -1505,7 +1517,8 @@
                 return;
             }
 
-            const config = { ...Manipulator.getDataAttributes(target),
+            const config = {
+                ...Manipulator.getDataAttributes(target),
                 ...Manipulator.getDataAttributes(this)
             };
             const slideIndex = this.getAttribute('data-bs-slide-to');
@@ -1524,6 +1537,7 @@
         }
 
     }
+
     /**
      * ------------------------------------------------------------------------
      * Data Api implementation
@@ -1585,6 +1599,7 @@
     const HEIGHT = 'height';
     const SELECTOR_ACTIVES = '.show, .collapsing';
     const SELECTOR_DATA_TOGGLE$4 = '[data-bs-toggle="collapse"]';
+
     /**
      * ------------------------------------------------------------------------
      * Class Definition
@@ -1792,7 +1807,8 @@
 
 
         _getConfig(config) {
-            config = { ...Default$8,
+            config = {
+                ...Default$8,
                 ...config
             };
             config.toggle = Boolean(config.toggle); // Coerce string values
@@ -1848,7 +1864,8 @@
 
         static collapseInterface(element, config) {
             let data = Data.get(element, DATA_KEY$8);
-            const _config = { ...Default$8,
+            const _config = {
+                ...Default$8,
                 ...Manipulator.getDataAttributes(element),
                 ...(typeof config === 'object' && config ? config : {})
             };
@@ -1877,6 +1894,7 @@
         }
 
     }
+
     /**
      * ------------------------------------------------------------------------
      * Data Api implementation
@@ -2522,7 +2540,8 @@
         name: 'eventListeners',
         enabled: true,
         phase: 'write',
-        fn: function fn() {},
+        fn: function fn() {
+        },
         effect: effect,
         data: {}
     };
@@ -2533,6 +2552,7 @@
         bottom: 'top',
         top: 'bottom'
     };
+
     function getOppositePlacement(placement) {
         return placement.replace(/left|right|bottom|top/g, function (matched) {
             return hash$1[matched];
@@ -2543,6 +2563,7 @@
         start: 'end',
         end: 'start'
     };
+
     function getOppositeVariationPlacement(placement) {
         return placement.replace(/start|end/g, function (matched) {
             return hash[matched];
@@ -3602,7 +3623,8 @@
                             options: options
                         });
 
-                        var noopFn = function noopFn() {};
+                        var noopFn = function noopFn() {
+                        };
 
                         effectCleanupFns.push(cleanupFn || noopFn);
                     }
@@ -3619,6 +3641,7 @@
             return instance;
         };
     }
+
     var createPopper$2 = /*#__PURE__*/popperGenerator(); // eslint-disable-next-line import/no-unused-modules
 
     var defaultModifiers$1 = [eventListeners, popperOffsets$1, computeStyles$1, applyStyles$1];
@@ -3736,6 +3759,7 @@
         popperConfig: '(null|object|function)',
         autoClose: '(boolean|string)'
     };
+
     /**
      * ------------------------------------------------------------------------
      * Class Definition
@@ -3916,7 +3940,8 @@
         }
 
         _getConfig(config) {
-            config = { ...this.constructor.Default,
+            config = {
+                ...this.constructor.Default,
                 ...Manipulator.getDataAttributes(this._element),
                 ...config
             };
@@ -3998,7 +4023,8 @@
                 }];
             }
 
-            return { ...defaultBsPopperConfig,
+            return {
+                ...defaultBsPopperConfig,
                 ...(typeof this._config.popperConfig === 'function' ? this._config.popperConfig(defaultBsPopperConfig) : this._config.popperConfig)
             };
         }
@@ -4152,6 +4178,7 @@
         }
 
     }
+
     /**
      * ------------------------------------------------------------------------
      * Data Api implementation
@@ -4333,7 +4360,8 @@
         }
 
         _getConfig(config) {
-            config = { ...Default$6,
+            config = {
+                ...Default$6,
                 ...(typeof config === 'object' ? config : {})
             };
             typeCheckConfig(NAME$7, config, DefaultType$6);
@@ -4425,6 +4453,7 @@
     const SELECTOR_MODAL_BODY = '.modal-body';
     const SELECTOR_DATA_TOGGLE$2 = '[data-bs-toggle="modal"]';
     const SELECTOR_DATA_DISMISS$2 = '[data-bs-dismiss="modal"]';
+
     /**
      * ------------------------------------------------------------------------
      * Class Definition
@@ -4573,7 +4602,8 @@
         }
 
         _getConfig(config) {
-            config = { ...Default$5,
+            config = {
+                ...Default$5,
                 ...Manipulator.getDataAttributes(this._element),
                 ...config
             };
@@ -4786,6 +4816,7 @@
         }
 
     }
+
     /**
      * ------------------------------------------------------------------------
      * Data Api implementation
@@ -4864,6 +4895,7 @@
     const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY$5}`;
     const SELECTOR_DATA_DISMISS$1 = '[data-bs-dismiss="offcanvas"]';
     const SELECTOR_DATA_TOGGLE$1 = '[data-bs-toggle="offcanvas"]';
+
     /**
      * ------------------------------------------------------------------------
      * Class Definition
@@ -4990,7 +5022,8 @@
 
 
         _getConfig(config) {
-            config = { ...Default$4,
+            config = {
+                ...Default$4,
                 ...Manipulator.getDataAttributes(this._element),
                 ...(typeof config === 'object' ? config : {})
             };
@@ -5045,6 +5078,7 @@
         }
 
     }
+
     /**
      * ------------------------------------------------------------------------
      * Data Api implementation
@@ -5168,6 +5202,7 @@
         u: [],
         ul: []
     };
+
     function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
         if (!unsafeHtml.length) {
             return unsafeHtml;
@@ -5288,6 +5323,7 @@
     const TRIGGER_FOCUS = 'focus';
     const TRIGGER_CLICK = 'click';
     const TRIGGER_MANUAL = 'manual';
+
     /**
      * ------------------------------------------------------------------------
      * Class Definition
@@ -5692,7 +5728,8 @@
                     }
                 }
             };
-            return { ...defaultBsPopperConfig,
+            return {
+                ...defaultBsPopperConfig,
                 ...(typeof this.config.popperConfig === 'function' ? this.config.popperConfig(defaultBsPopperConfig) : this.config.popperConfig)
             };
         }
@@ -5739,7 +5776,8 @@
             EventHandler.on(this._element.closest(`.${CLASS_NAME_MODAL}`), 'hide.bs.modal', this._hideModalHandler);
 
             if (this.config.selector) {
-                this.config = { ...this.config,
+                this.config = {
+                    ...this.config,
                     trigger: 'manual',
                     selector: ''
                 };
@@ -5839,7 +5877,8 @@
                 config.container = config.container[0];
             }
 
-            config = { ...this.constructor.Default,
+            config = {
+                ...this.constructor.Default,
                 ...dataAttributes,
                 ...(typeof config === 'object' && config ? config : {})
             };
@@ -5933,6 +5972,7 @@
         }
 
     }
+
     /**
      * ------------------------------------------------------------------------
      * jQuery
@@ -5960,14 +6000,16 @@
     const EVENT_KEY$3 = `.${DATA_KEY$3}`;
     const CLASS_PREFIX = 'bs-popover';
     const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g');
-    const Default$2 = { ...Tooltip.Default,
+    const Default$2 = {
+        ...Tooltip.Default,
         placement: 'right',
         offset: [0, 8],
         trigger: 'click',
         content: '',
         template: '<div class="popover" role="tooltip">' + '<div class="popover-arrow"></div>' + '<h3 class="popover-header"></h3>' + '<div class="popover-body"></div>' + '</div>'
     };
-    const DefaultType$2 = { ...Tooltip.DefaultType,
+    const DefaultType$2 = {
+        ...Tooltip.DefaultType,
         content: '(string|element|function)'
     };
     const Event$1 = {
@@ -5986,6 +6028,7 @@
     const CLASS_NAME_SHOW$2 = 'show';
     const SELECTOR_TITLE = '.popover-header';
     const SELECTOR_CONTENT = '.popover-body';
+
     /**
      * ------------------------------------------------------------------------
      * Class Definition
@@ -6083,6 +6126,7 @@
         }
 
     }
+
     /**
      * ------------------------------------------------------------------------
      * jQuery
@@ -6133,6 +6177,7 @@
     const SELECTOR_DROPDOWN_TOGGLE$1 = '.dropdown-toggle';
     const METHOD_OFFSET = 'offset';
     const METHOD_POSITION = 'position';
+
     /**
      * ------------------------------------------------------------------------
      * Class Definition
@@ -6207,7 +6252,8 @@
 
 
         _getConfig(config) {
-            config = { ...Default$1,
+            config = {
+                ...Default$1,
                 ...Manipulator.getDataAttributes(this._element),
                 ...(typeof config === 'object' && config ? config : {})
             };
@@ -6332,6 +6378,7 @@
         }
 
     }
+
     /**
      * ------------------------------------------------------------------------
      * Data Api implementation
@@ -6383,6 +6430,7 @@
     const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tab"], [data-bs-toggle="pill"], [data-bs-toggle="list"]';
     const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle';
     const SELECTOR_DROPDOWN_ACTIVE_CHILD = ':scope > .dropdown-menu .active';
+
     /**
      * ------------------------------------------------------------------------
      * Class Definition
@@ -6522,6 +6570,7 @@
         }
 
     }
+
     /**
      * ------------------------------------------------------------------------
      * Data Api implementation
@@ -6585,6 +6634,7 @@
         delay: 5000
     };
     const SELECTOR_DATA_DISMISS = '[data-bs-dismiss="toast"]';
+
     /**
      * ------------------------------------------------------------------------
      * Class Definition
@@ -6697,7 +6747,8 @@
 
 
         _getConfig(config) {
-            config = { ...Default,
+            config = {
+                ...Default,
                 ...Manipulator.getDataAttributes(this._element),
                 ...(typeof config === 'object' && config ? config : {})
             };
@@ -6736,6 +6787,7 @@
         }
 
     }
+
     /**
      * ------------------------------------------------------------------------
      * jQuery

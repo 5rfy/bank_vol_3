@@ -1,28 +1,32 @@
-package com.example.bank_vol_3.model;
+package com.example.bank_vol_3.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
+@Getter
+@Setter
 @Entity
-@Table(name = "transact")
-public class Transact {
+@Table(name = "payments")
+public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long transaction_id;
-    Long account_id;
-    String transaction_type;
-    double amount;
-    String source;
+    Long paymentId;
+    Long accountId;
+    String beneficiary;
+    int beneficiaryAccNo;
+    BigDecimal amount;
+    String reference_no;
     String status;
     String reason_code;
     LocalDateTime created_at;
+
 }
