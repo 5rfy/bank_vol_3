@@ -7,23 +7,24 @@ import lombok.experimental.FieldDefaults;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
+@Getter
+@Setter
 @Entity
 @Table(name = "accounts")
 public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long account_id;
-    Long user_id;
+    Long accountId;
+    Long userId;
     Integer accountNumber;
-    String account_name;
-    String account_type;
+    String accountName;
+    String accountType;
     BigDecimal balance;
-    LocalDateTime created_at;
-    LocalDateTime updated_at;
+    LocalDateTime createdAt;
+    LocalDateTime updatedAt;
 }

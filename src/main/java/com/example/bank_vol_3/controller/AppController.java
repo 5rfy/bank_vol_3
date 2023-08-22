@@ -36,7 +36,7 @@ public class AppController {
 
         User user = (User) session.getAttribute("user");
 
-        userIsNull(user);
+        accountService.userIsNull(user);
 
         List<Account> accounts = accountService.getAccounts(user.getId());
         BigDecimal getBalance = accountService.getBalance(user.getId());
@@ -65,12 +65,5 @@ public class AppController {
         model.addAttribute("user", user);
 
         return "payment_history";
-    }
-
-    private void userIsNull(User user) {
-
-        if (user == null) {
-            throw new RuntimeException("");
-        }
     }
 }

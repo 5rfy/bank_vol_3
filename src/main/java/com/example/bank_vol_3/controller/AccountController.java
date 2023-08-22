@@ -28,11 +28,11 @@ public class AccountController {
 
         try {
             accountService.checkNameType(accountName, accountType);
-            User user = (User)session.getAttribute("user");
+            User user = (User) session.getAttribute("user");
             accountService.createBankAccount(user.getId(), accountName, accountType);
             attributes.addFlashAttribute("success", "Аккаунт успешно создан");
             return "redirect:dashboard";
-        } catch(RuntimeException e) {
+        } catch (RuntimeException e) {
             attributes.addFlashAttribute("emptyNameType", e.getMessage());
             return "redirect:dashboard";
         }

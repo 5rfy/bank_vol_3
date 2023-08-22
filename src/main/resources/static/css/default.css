@@ -1,8 +1,9 @@
 
-*{
+* {
     box-sizing: border-box;
 }
-body{
+
+body {
     height: 100vh;
     background-image: url("../images/main_bg.png");
     background-size: cover;
@@ -10,44 +11,51 @@ body{
     background-repeat: no-repeat;
 }
 
-#sample-text-card{
+#sample-text-card {
     margin: 0 100px;
     font-family: Comfortaa, serif;
     color: white;
 }
 
-#sample-text-card h1{
+#sample-text-card h1 {
     font-size: 65px;
 }
 
-#sample-text-card p{
+#sample-text-card p {
     font-size: 20px;
 }
-.button-wrapper a{
+
+.button-wrapper a {
     padding: 15px;
     width: 200px;
     color: white;
     box-shadow: 0 3px 6px #000081;
 }
-.register{
+
+.register {
     margin-right: 8px;
     background-color: #FF4E00;
     border: 1px solid #8B2B00;
 }
-.login{
+
+.login {
     background-color: #FFB114;
     border: 1px solid #543800;
 }
-.card{
+
+.card {
     font-family: Comfortaa, serif;
 }
-.card .form-control{
+
+.card .form-control {
     box-shadow: 0 3px 6px #000081;
 }
-.card .card-title{
+
+.card .card-title {
     color: white;
 }
-.card button{
+
+.card button {
     background-color: #FF4E00;
     border: 1px solid #8B2B00;
     color: white;

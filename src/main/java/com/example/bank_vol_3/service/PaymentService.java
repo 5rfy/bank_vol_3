@@ -3,6 +3,7 @@ package com.example.bank_vol_3.service;
 import com.example.bank_vol_3.entities.Account;
 import com.example.bank_vol_3.entities.Payment;
 import com.example.bank_vol_3.entities.PaymentHistory;
+import com.example.bank_vol_3.entities.User;
 import com.example.bank_vol_3.repository.AccountRepository;
 import com.example.bank_vol_3.repository.PaymentHistoryRepository;
 import com.example.bank_vol_3.repository.PaymentRepository;
@@ -11,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -21,13 +23,14 @@ public class PaymentService {
 
     AccountRepository accountRepository;
     PaymentRepository paymentRepository;
+    TransactService transactService;
     TransferService transferService;//TODO
     PaymentHistoryRepository paymentHistoryRepository;
 
-    public void checkFields(String beneficiary,
-                            String accountNumber,
-                            Long accountId,
-                            String paymentAmount) {
+    private void checkFields(String beneficiary,
+                             String accountNumber,
+                             Long accountId,
+                             BigDecimal paymentAmount) {
         if (accountId == null) {
             throw new RuntimeException("Необходимо выбрать аккаунт");
         }
@@ -37,35 +40,35 @@ public class PaymentService {
         if (accountNumber.isEmpty()) {
             throw new RuntimeException("Укажите номер счета получателя");
         }
-        if (paymentAmount.isEmpty() || paymentAmount.equals("0")) {
+        if (paymentAmount.toString().isEmpty() || paymentAmount.toString().equals("0")) {
             throw new RuntimeException("Сумма перевод не может быть пуста или равна 0");
         }
-        if (paymentAmount.charAt(0) == '-') {
+        if (paymentAmount.toString().charAt(0) == '-') {
             throw new RuntimeException("Сумма перевод не может быть отрицательна");
         }
     }
 
-    public void makePayment(String beneficiary,
+    public void makePayment(User user,
+                            String beneficiary,
                             String accountNumber,
                             Long accountId,
                             String reference,
-                            String paymentAmount,
-                            double currentBalance) {
-        double amount = Double.parseDouble(paymentAmount);
+                            BigDecimal paymentAmount) {
+        checkFields(beneficiary, accountNumber, accountId, paymentAmount);
         int recipientNumber = Integer.parseInt(accountNumber);
+        BigDecimal currentBalance = transactService.getAccountBalance(user.getId(), accountId);
+        Account recipientAccount = checkRecipientAndAmount(paymentAmount, currentBalance, recipientNumber);
+        BigDecimal recipientBalance = recipientAccount.getBalance();
+        long recipientId = recipientAccount.getAccountId();
 
-        Account recipientAccount = checkRecipientAndAmount(amount, currentBalance, recipientNumber);
-        double recipientBalance = recipientAccount.getBalance().doubleValue();
-        long recipientId = recipientAccount.getAccount_id();
 
-
-        transferMoney(currentBalance, recipientBalance, amount, accountId, recipientId);
+        transferMoney(currentBalance, recipientBalance, paymentAmount, accountId, recipientId);
 
         Payment payment = Payment.builder()
-                .account_id(accountId)
+                .accountId(accountId)
                 .beneficiary(beneficiary)
-                .beneficiary_acc_no(recipientNumber)
-                .amount(amount)
+                .beneficiaryAccNo(recipientNumber)
+                .amount(paymentAmount)
                 .reference_no(reference)
                 .status("success")
                 .reason_code("p")
@@ -73,22 +76,24 @@ public class PaymentService {
                 .build();
 
         paymentRepository.save(payment);
+
+        savePayment(beneficiary, accountNumber, paymentAmount, reference);
     }
 
-    private void transferMoney(double currentBalance,
-                               double recipientBalance,
-                               double amount,
+    private void transferMoney(BigDecimal currentBalance,
+                               BigDecimal recipientBalance,
+                               BigDecimal amount,
                                long accountId,
                                long recipientId) {
-        double minusBalance = currentBalance - amount;
-        double plusBalance = recipientBalance + amount;
+        BigDecimal minusBalance = currentBalance.subtract(amount);
+        BigDecimal plusBalance = recipientBalance.add(amount);
 
         accountRepository.changeAccountBalance(minusBalance, accountId);
         accountRepository.changeAccountBalance(plusBalance, recipientId);
     }
 
-    private Account checkRecipientAndAmount(double amount, double currentBalance, int recipientNumber) {
-        if (amount > currentBalance) {
+    private Account checkRecipientAndAmount(BigDecimal amount, BigDecimal currentBalance, int recipientNumber) {
+        if (amount.doubleValue() > currentBalance.doubleValue()) {
             throw new RuntimeException("На данном аккаунте не достаточно средств");
         }
 
@@ -106,14 +111,13 @@ public class PaymentService {
         return paymentHistoryRepository.findAllByUserId(id);
     }
 
-    public void savePayment(String beneficiary, String accountNumber, String paymentAmount, String reference) {
+    public void savePayment(String beneficiary, String accountNumber, BigDecimal paymentAmount, String reference) {
         int recipientNumber = Integer.parseInt(accountNumber);
-        double recipientBalance = Double.parseDouble(paymentAmount);
 
         PaymentHistory paymentHistory = PaymentHistory.builder()
                 .recipientName(beneficiary)
                 .recipientAccountNumber(recipientNumber)
-                .amount(recipientBalance)
+                .amount(paymentAmount)
                 .status("success")
                 .reference(reference)
                 .reason_code("p")

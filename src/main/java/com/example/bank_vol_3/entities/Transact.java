@@ -4,13 +4,15 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
+@Getter
+@Setter
 @Entity
 @Table(name = "transact")
 public class Transact {
@@ -20,7 +22,7 @@ public class Transact {
     Long transaction_id;
     Long account_id;
     String transaction_type;
-    double amount;
+    BigDecimal amount;
     String source;
     String status;
     String reason_code;

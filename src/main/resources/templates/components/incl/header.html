@@ -1,28 +1,30 @@
 <header class="main-page-header mb-3 bg-primary" xmlns:th='http://www.thymeleaf.org'>
-  <div class="container d-flex align-items-center">
-    <div class="company-name">
-      Easy-Way Bank
-    </div>
-    <!-- Navigation -->
-    <nav class="navigation">
-      <li> <a href="/api/v1/dashboard">Главная</a> </li>
-      <li> <a href="/api/v1/payment_history">История платежей</a> </li>
-      <li> <a href="">История транзакций</a> </li>
-    </nav>
-    <!-- End of Navigation -->
+    <div class="container d-flex align-items-center">
+        <div class="company-name">
+            Easy-Way Bank
+        </div>
+        <!-- Navigation -->
+        <nav class="navigation">
+            <li><a href="/api/v1/dashboard">Главная</a></li>
+            <li><a href="/api/v1/payment_history">История платежей</a></li>
+            <li><a href="">История транзакций</a></li>
+        </nav>
+        <!-- End of Navigation -->
 
-    <!-- Display name -->
-    <div class="display-name ms-auto text-white" >
-      <i class="fa fa-circle text-success me-2"></i> Добро пожаловать: <span th:object="${user}" th:text="${user.getFirstname()}"/> <span th:text="${user.getLastname()}"/>
-    </div>
-    <!-- End of Display name -->
+        <!-- Display name -->
+        <div class="display-name ms-auto text-white">
+            <i class="fa fa-circle text-success me-2"></i> Добро пожаловать: <span th:object="${user}"
+                                                                                   th:text="${user.getFirstname()}"/>
+            <span th:text="${user.getLastname()}"/>
+        </div>
+        <!-- End of Display name -->
 
-    <!-- Log Out Button -->
-    <a href="/api/v1/logout" class="btn btn-sm text-white ms-2">
-      <i class="fa fa-sign-out-alt me-2"></i> Выход
-    </a>
-    <!-- End of Log Out Button -->
-  </div>
+        <!-- Log Out Button -->
+        <a href="/api/v1/logout" class="btn btn-sm text-white ms-2">
+            <i class="fa fa-sign-out-alt me-2"></i> Выход
+        </a>
+        <!-- End of Log Out Button -->
+    </div>
 </header>
 
 

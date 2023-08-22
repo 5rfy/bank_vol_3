@@ -32,6 +32,7 @@ public class IndexController {
 
         return "error";
     }
+
     @GetMapping("/verify")
     public String getVerify(@RequestParam("token") UUID token,
                             @RequestParam("code") Integer code,

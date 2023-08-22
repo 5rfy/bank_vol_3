@@ -4,9 +4,10 @@
             <div class="form-group">
                 <label for="">Select Account</label>
                 <select name="transfer_from" class="form-control" id="">
-                    <option value=""> -- Select Account -- </option>
+                    <option value=""> -- Select Account --</option>
                     <div th:if="${userAccounts != null}" th:each="selectAmount : ${userAccounts}">
-                        <option th:value="${selectAmount.getAccount_id()}" th:text="${selectAmount.getAccount_name()}"></option>
+                        <option th:value="${selectAmount.getAccount_id()}"
+                                th:text="${selectAmount.getAccount_name()}"></option>
                     </div>
                 </select>
             </div>
@@ -14,9 +15,10 @@
             <div class="form-group">
                 <label for="">Select Account</label>
                 <select name="transfer_to" class="form-control" id="">
-                    <option value=""> -- Select Account -- </option>
+                    <option value=""> -- Select Account --</option>
                     <div th:if="${userAccounts != null}" th:each="selectAmount : ${userAccounts}">
-                        <option th:value="${selectAmount.getAccount_id()}" th:text="${selectAmount.getAccount_name()}"></option>
+                        <option th:value="${selectAmount.getAccount_id()}"
+                                th:text="${selectAmount.getAccount_name()}"></option>
                     </div>
                 </select>
             </div>

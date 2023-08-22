@@ -4,24 +4,26 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
+@Getter
+@Setter
 @Entity
 @Table(name = "payments")
 public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long payment_id;
-    Long account_id;
+    Long paymentId;
+    Long accountId;
     String beneficiary;
-    int beneficiary_acc_no;
-    double amount;
+    int beneficiaryAccNo;
+    BigDecimal amount;
     String reference_no;
     String status;
     String reason_code;

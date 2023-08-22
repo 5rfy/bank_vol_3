@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -37,30 +38,26 @@ public class TransactController {
     List<Account> userAccounts;
 
     @PostMapping("/deposit")
-    public String deposit(@RequestParam("deposit_amount") String depositAmount,
+    public String deposit(@RequestParam("deposit_amount") BigDecimal depositAmount,
                           @RequestParam("account_id") Long accountId,
                           HttpSession session,
                           RedirectAttributes attributes) {
         try {
-            transactService.checkFields(depositAmount, accountId);
-
             model = new ModelAndView("/components/transact_forms/deposit_form");
 
             user = (User) session.getAttribute("user");
             userAccounts = accountService.getAccounts(user.getId());
 
-            double currentBalance = transactService.getAccountBalance(user.getId(), accountId);
-
-            transactService.updateBalance(currentBalance, depositAmount, accountId);
-            transactService.saveTransact(accountId, "Deposit", Double.parseDouble(depositAmount),
-                                    "online", "success", "Deposit Transaction Successful");
+            transactService.updateBalance(user, depositAmount, accountId);
+            transactService.saveTransact(accountId, "Deposit", depositAmount,
+                    "online", "success", "Deposit Transaction Successful");
 
             model.addObject("userAccounts", userAccounts);
             attributes.addFlashAttribute("successDeposit", "Депозит успешно отправлен");
 
             return "redirect:dashboard";
         } catch (RuntimeException e) {
-            transactService.saveTransact(accountId, "Deposit", Double.parseDouble(depositAmount),
+            transactService.saveTransact(accountId, "Deposit", depositAmount,
                     "online", "failed", "Deposit Transaction Successful");
             attributes.addFlashAttribute("depositAmountIsNull", e.getMessage());
             return "redirect:dashboard";
@@ -70,22 +67,17 @@ public class TransactController {
     @PostMapping("/transfer")
     public String transfer(@RequestParam("transfer_from") Long transferFrom,
                            @RequestParam("transfer_to") Long transferTo,
-                           @RequestParam("transfer_amount") String transferAmount,
+                           @RequestParam("transfer_amount") BigDecimal transferAmount,
                            HttpSession session,
                            RedirectAttributes attributes) {
         try {
-            transferService.checkFields(transferFrom, transferTo, transferAmount);
-
             model = new ModelAndView("/components/transact_forms/transfer_form");
 
             user = (User) session.getAttribute("user");
             userAccounts = accountService.getAccounts(user.getId());
 
-            double currentBalanceFrom = transactService.getAccountBalance(user.getId(), transferFrom);
-            double currentBalanceTo = transactService.getAccountBalance(user.getId(), transferTo);
-
-            transferService.updateBalance(currentBalanceFrom, currentBalanceTo, transferAmount, transferFrom, transferTo);
-            transactService.saveTransact(transferFrom, "Transfer", Double.parseDouble(transferAmount),
+            transferService.updateBalance(user, transferAmount, transferFrom, transferTo);
+            transactService.saveTransact(transferFrom, "Transfer", transferAmount,
                     "online", "success", "Transfer Transaction Successful");
 
             model.addObject("userAccounts", userAccounts);
@@ -93,7 +85,7 @@ public class TransactController {
 
             return "redirect:dashboard";
         } catch (RuntimeException e) {
-            transactService.saveTransact(transferFrom, "Transfer", Double.parseDouble(transferAmount),
+            transactService.saveTransact(transferFrom, "Transfer", transferAmount,
                     "online", "failed", "Transfer Transaction Successful");
             attributes.addFlashAttribute("transferError", e.getMessage());
             return "redirect:dashboard";
@@ -101,23 +93,19 @@ public class TransactController {
     }
 
     @PostMapping("/withdraw")
-    public String withdraw(@RequestParam("withdrawal_amount") String withdrawAmount,
+    public String withdraw(@RequestParam("withdrawal_amount") BigDecimal withdrawAmount,
                            @RequestParam("account_id") Long accountId,
                            HttpSession session,
                            RedirectAttributes attributes) {
 
         try {
-            withdrawService.checkFields(withdrawAmount, accountId);
-
             model = new ModelAndView("/components/transact_forms/withdraw_form");
 
             user = (User) session.getAttribute("user");
             userAccounts = accountService.getAccounts(user.getId());
 
-            double currentBalance = transactService.getAccountBalance(user.getId(), accountId);
-
-            withdrawService.withdraw(currentBalance, withdrawAmount, accountId);
-            transactService.saveTransact(accountId, "Withdraw", Double.parseDouble(withdrawAmount),
+            withdrawService.withdraw(user, withdrawAmount, accountId);
+            transactService.saveTransact(accountId, "Withdraw", withdrawAmount,
                     "online", "success", "Withdraw Transaction Successful");
 
             model.addObject("userAccounts", userAccounts);
@@ -125,7 +113,7 @@ public class TransactController {
 
             return "redirect:dashboard";
         } catch (RuntimeException e) {
-            transactService.saveTransact(accountId, "Withdraw", Double.parseDouble(withdrawAmount),
+            transactService.saveTransact(accountId, "Withdraw", withdrawAmount,
                     "online", "failed", "Withdraw Transaction Successful");
             attributes.addFlashAttribute("withdrawError", e.getMessage());
             return "redirect:dashboard";
@@ -137,32 +125,27 @@ public class TransactController {
                           @RequestParam("account_number") String accountNumber,
                           @RequestParam("account_id") Long accountId,
                           @RequestParam("reference") String reference,
-                          @RequestParam("payment_amount") String paymentAmount,
+                          @RequestParam("payment_amount") BigDecimal paymentAmount,
                           HttpSession session,
-                          RedirectAttributes attributes
-                          ) {
+                          RedirectAttributes attributes) {
         try {
-            paymentService.checkFields(beneficiary, accountNumber, accountId, paymentAmount);
-
             model = new ModelAndView("/components/transact_forms/payment_form");
             model = new ModelAndView("payment_history");
 
             user = (User) session.getAttribute("user");
             userAccounts = accountService.getAccounts(user.getId());
 
-            double currentBalance = transactService.getAccountBalance(user.getId(), accountId);
+            paymentService.makePayment(user, beneficiary, accountNumber, accountId, reference, paymentAmount);
 
-            paymentService.makePayment(beneficiary, accountNumber, accountId, reference, paymentAmount, currentBalance);
-            paymentService.savePayment(beneficiary, accountNumber, paymentAmount, reference);
-            transactService.saveTransact(accountId, "Payment", Double.parseDouble(paymentAmount),
-                                    "online", "success", "Payment Transaction Successful");
+            transactService.saveTransact(accountId, "Payment", paymentAmount,
+                    "online", "success", "Payment Transaction Successful");
 
             model.addObject("userAccounts", userAccounts);
             attributes.addFlashAttribute("successPayment", "Перевод успешно выполнен");
 
             return "redirect:dashboard";
         } catch (RuntimeException e) {
-            transactService.saveTransact(accountId, "Payment", Double.parseDouble(paymentAmount),
+            transactService.saveTransact(accountId, "Payment", paymentAmount,
                     "online", "failed", "Payment Transaction Successful");
             attributes.addFlashAttribute("paymentError", e.getMessage());
             return "redirect:dashboard";
